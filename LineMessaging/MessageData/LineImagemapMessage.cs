@@ -14,48 +14,36 @@ namespace LINE
         public string AltText { get; set; }
 
         [DataMember(Name = "baseSize")]
-        public BaseSizeObject BaseSize { get; set; }
+        public LineSizeObject BaseSize { get; set; }
 
         [DataMember(Name = "actions")]
-        public ActionObject[] Actions { get; set; }
+        public ActionObjectBase[] Actions { get; set; }
 
-        public class BaseSizeObject
-        {
-            [DataMember(Name = "width")]
-            public int Width { get; set; }
-
-            [DataMember(Name = "height")]
-            public int Height { get; set; }
-        }
-
-        public class ActionObject
+        public abstract class ActionObjectBase
         {
             [DataMember(Name = "type")]
-            public ImagemapActionType Type { get; set; }
+            public abstract ActionType Type { get; }
+
+            [DataMember(Name = "area")]
+            public LineAreaBoundsObject Area { get; set; }
+        }
+
+        public class LinkActionObject : ActionObjectBase
+        {
+            [DataMember(Name = "type")]
+            public override ActionType Type => ActionType.Uri;
 
             [DataMember(Name = "linkUri")]
             public string LinkUri { get; set; }
+        }
+
+        public class MessageActionObject : ActionObjectBase
+        {
+            [DataMember(Name = "type")]
+            public override ActionType Type => ActionType.Message;
 
             [DataMember(Name = "text")]
             public string Text { get; set; }
-
-            [DataMember(Name = "area")]
-            public AreaObject Area { get; set; }
-
-            public class AreaObject
-            {
-                [DataMember(Name = "x")]
-                public int X { get; set; }
-
-                [DataMember(Name = "y")]
-                public int Y { get; set; }
-
-                [DataMember(Name = "width")]
-                public int Width { get; set; }
-
-                [DataMember(Name = "height")]
-                public int Height { get; set; }
-            }
         }
     }
 }

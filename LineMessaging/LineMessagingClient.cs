@@ -9,7 +9,9 @@ namespace LINE
 {
     public partial class LineMessagingClient
     {
-        private static readonly MediaTypeHeaderValue MediaType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+        private static readonly MediaTypeHeaderValue MediaTypeJson = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+        private static readonly MediaTypeHeaderValue MediaTypeJpeg = MediaTypeHeaderValue.Parse("image/jpeg");
+        private static readonly MediaTypeHeaderValue MediaTypePng = MediaTypeHeaderValue.Parse("image/png");
         private static readonly HttpClient HttpClient = new HttpClient
         {
             BaseAddress = LineConstants.BaseUri,
@@ -41,6 +43,16 @@ namespace LINE
         internal async Task Post(string path, object body = null)
         {
             await SendRequest(HttpMethod.Post, path, null, body);
+        }
+
+        internal async Task PostJpeg(string path, byte[] image)
+        {
+            await PostImage(path, "jpeg", image);
+        }
+
+        internal async Task PostPng(string path, byte[] image)
+        {
+            await PostImage(path, "png", image);
         }
 
         internal async Task Delete(string path)
@@ -75,6 +87,38 @@ namespace LINE
             return JsonSerializer.Deserialize<T>(responseJson);
         }
 
+        private async Task PostImage(string path, string imageFormat, byte[] image)
+        {
+            using (var message = new HttpRequestMessage(HttpMethod.Post, path))
+            {
+                message.Content = new ByteArrayContent(image);
+                switch (imageFormat)
+                {
+                    case "jpeg":
+                        message.Content.Headers.ContentType = MediaTypeJpeg;
+                        break;
+
+                    case "png":
+                        message.Content.Headers.ContentType = MediaTypePng;
+                        break;
+
+                    default:
+                        throw new LineMessagingException(path, $"{imageFormat} is not supported.");
+                }
+                message.Headers.Authorization = accessTokenHeaderValue;
+
+                HttpResponseMessage response;
+                try
+                {
+                    response = await HttpClient.SendAsync(message);
+                }
+                catch (TaskCanceledException)
+                {
+                    throw new LineMessagingException(path, "Request Timeout");
+                }
+            }
+        }
+
         private async Task<string> SendRequest(HttpMethod method, string path,
             Dictionary<string, object> query = null, object body = null)
         {
@@ -91,7 +135,7 @@ namespace LINE
                 {
                     bodyBytes = JsonSerializer.Serialize(body);
                     message.Content = new ByteArrayContent(bodyBytes);
-                    message.Content.Headers.ContentType = MediaType;
+                    message.Content.Headers.ContentType = MediaTypeJson;
                 }
                 message.Headers.Authorization = accessTokenHeaderValue;
 
@@ -99,7 +143,6 @@ namespace LINE
                 try
                 {
                     response = await HttpClient.SendAsync(message);
-
                 }
                 catch (TaskCanceledException)
                 {

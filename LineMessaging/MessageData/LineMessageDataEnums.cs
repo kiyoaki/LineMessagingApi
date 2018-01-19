@@ -32,15 +32,6 @@ namespace LINE
         Template
     }
 
-    public enum ImagemapActionType
-    {
-        [EnumMember(Value = "uri")]
-        Uri,
-
-        [EnumMember(Value = "message")]
-        Message
-    }
-
     public enum TemplateType
     {
         [EnumMember(Value = "buttons")]
@@ -56,7 +47,7 @@ namespace LINE
         ImageCarousel,
     }
 
-    public enum PostbackActionType
+    public enum ActionType
     {
         [EnumMember(Value = "postback")]
         Postback,
