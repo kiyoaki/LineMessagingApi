@@ -2,7 +2,7 @@
 
 namespace LINE
 {
-    public class OAuthAccessTokenRequest
+    public class LineOAuthAccessTokenRequest
     {
         [DataMember(Name = "grant_type")]
         public OAuthGrantType GrantType { get; set; } = OAuthGrantType.ClientCredentials;

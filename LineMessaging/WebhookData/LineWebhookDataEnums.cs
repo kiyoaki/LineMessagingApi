@@ -26,7 +26,7 @@ namespace LINE
         Beacon
     }
 
-    public enum WebhookRequestMessageSourceType
+    public enum WebhookRequestSourceType
     {
         [EnumMember(Value = "user")]
         User,

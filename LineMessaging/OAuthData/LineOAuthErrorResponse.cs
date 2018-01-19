@@ -2,7 +2,7 @@
 
 namespace LINE
 {
-    public class OAuthErrorResponse
+    public class LineOAuthErrorResponse
     {
         [DataMember(Name = "error")]
         public string Error { get; set; }

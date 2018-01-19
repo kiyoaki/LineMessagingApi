@@ -2,15 +2,15 @@
 
 namespace LINE
 {
-    public class ImageMessage
+    public class LineAudioMessage
     {
         [DataMember(Name = "type")]
-        public MessageType Type => MessageType.Image;
+        public MessageType Type => MessageType.Audio;
 
         [DataMember(Name = "originalContentUrl")]
         public string OriginalContentUrl { get; set; }
 
-        [DataMember(Name = "previewImageUrl")]
-        public string PreviewImageUrl { get; set; }
+        [DataMember(Name = "duration")]
+        public long Duration { get; set; }
     }
 }

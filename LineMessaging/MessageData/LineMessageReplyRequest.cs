@@ -2,7 +2,7 @@
 
 namespace LINE
 {
-    public class MessageReplyRequest
+    public class LineMessageReplyRequest
     {
         [DataMember(Name = "replyToken")]
         public string replyToken { get; set; }

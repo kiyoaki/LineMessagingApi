@@ -2,7 +2,7 @@
 
 namespace LINE
 {
-    public class ImageMessage
+    public class LineVideoMessage
     {
         [DataMember(Name = "type")]
         public MessageType Type => MessageType.Video;

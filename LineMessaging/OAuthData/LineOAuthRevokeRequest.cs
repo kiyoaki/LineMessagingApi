@@ -2,7 +2,7 @@
 
 namespace LINE
 {
-    public class OAuthRevokeRequest
+    public class LineOAuthRevokeRequest
     {
         [DataMember(Name = "access_token")]
         public string AccessToken { get; set; }

@@ -2,7 +2,7 @@
 
 namespace LINE
 {
-    public class StickerMessage
+    public class LineStickerMessage
     {
         [DataMember(Name = "type")]
         public MessageType Type => MessageType.Sticker;

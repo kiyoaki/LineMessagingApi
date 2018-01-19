@@ -5,16 +5,15 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Utf8Json;
 
 namespace LINE
 {
-    public class Webhook
+    public class LineWebhookHandler
     {
-        private const string SignatureHeaderKey = "X-Line-Signature";
-
         private readonly byte[] secret;
 
-        public Webhook(string channelSecret)
+        public LineWebhookHandler(string channelSecret)
         {
             if (string.IsNullOrEmpty(channelSecret))
             {
@@ -24,10 +23,20 @@ namespace LINE
             secret = Encoding.UTF8.GetBytes(channelSecret);
         }
 
+        public async Task<(bool valid, LineWebhookRequest request)> VerifyAndDeserialize(HttpRequestMessage req)
+        {
+            var (valid, json) = await Verify(req);
+            if (valid)
+            {
+                return (true, JsonSerializer.Deserialize<LineWebhookRequest>(json));
+            }
+
+            return (false, null);
+        }
+
         public async Task<(bool valid, string json)> Verify(HttpRequestMessage req)
         {
-            IEnumerable<string> headers;
-            if (!req.Headers.TryGetValues("X-Line-Signature", out headers))
+            if (!req.Headers.TryGetValues("X-Line-Signature", out IEnumerable<string> headers))
             {
                 return (false, null);
             }

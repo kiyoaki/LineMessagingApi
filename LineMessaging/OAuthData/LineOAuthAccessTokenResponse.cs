@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace LINE
 {
-    public class OAuthAccessTokenResponse
+    public class LineOAuthAccessTokenResponse
     {
         [DataMember(Name = "access_token")]
         public string AccessToken { get; set; }

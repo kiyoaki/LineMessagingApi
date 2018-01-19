@@ -2,7 +2,7 @@
 
 namespace LINE
 {
-    public class TextMessage
+    public class LineTextMessage
     {
         [DataMember(Name = "type")]
         public MessageType Type => MessageType.Text;

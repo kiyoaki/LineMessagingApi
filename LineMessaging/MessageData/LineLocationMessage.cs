@@ -2,7 +2,7 @@
 
 namespace LINE
 {
-    public class LocationMessage
+    public class LineLocationMessage
     {
         [DataMember(Name = "type")]
         public MessageType Type => MessageType.Location;
