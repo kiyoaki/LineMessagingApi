@@ -2,10 +2,10 @@
 
 namespace LINE
 {
-    public class LineAudioMessage
+    public class LineAudioMessage : LineMessageObjectBase
     {
         [DataMember(Name = "type")]
-        public MessageType Type => MessageType.Audio;
+        public override MessageType Type => MessageType.Audio;
 
         [DataMember(Name = "originalContentUrl")]
         public string OriginalContentUrl { get; set; }

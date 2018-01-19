@@ -2,10 +2,10 @@
 
 namespace LINE
 {
-    public class LineVideoMessage
+    public class LineVideoMessage : LineMessageObjectBase
     {
         [DataMember(Name = "type")]
-        public MessageType Type => MessageType.Video;
+        public override MessageType Type => MessageType.Video;
 
         [DataMember(Name = "originalContentUrl")]
         public string OriginalContentUrl { get; set; }

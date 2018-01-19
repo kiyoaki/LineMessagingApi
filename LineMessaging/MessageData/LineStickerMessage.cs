@@ -2,10 +2,10 @@
 
 namespace LINE
 {
-    public class LineStickerMessage
+    public class LineStickerMessage : LineMessageObjectBase
     {
         [DataMember(Name = "type")]
-        public MessageType Type => MessageType.Sticker;
+        public override MessageType Type => MessageType.Sticker;
 
         [DataMember(Name = "packageId")]
         public string PackageId { get; set; }

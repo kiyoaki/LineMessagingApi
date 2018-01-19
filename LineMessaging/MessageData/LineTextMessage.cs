@@ -2,10 +2,10 @@
 
 namespace LINE
 {
-    public class LineTextMessage
+    public class LineTextMessage : LineMessageObjectBase
     {
         [DataMember(Name = "type")]
-        public MessageType Type => MessageType.Text;
+        public override MessageType Type => MessageType.Text;
 
         [DataMember(Name = "text")]
         public string Text { get; set; }

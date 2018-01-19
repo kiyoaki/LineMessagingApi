@@ -2,10 +2,10 @@
 
 namespace LINE
 {
-    public class LineTemplateMessage
+    public class LineTemplateMessage : LineMessageObjectBase
     {
         [DataMember(Name = "type")]
-        public MessageType Type => MessageType.Template;
+        public override MessageType Type => MessageType.Template;
 
         [DataMember(Name = "altText")]
         public string AltText { get; set; }

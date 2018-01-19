@@ -2,10 +2,10 @@
 
 namespace LINE
 {
-    public class LineImagemapMessage
+    public class LineImagemapMessage : LineMessageObjectBase
     {
         [DataMember(Name = "type")]
-        public MessageType Type => MessageType.Imagemap;
+        public override MessageType Type => MessageType.Imagemap;
 
         [DataMember(Name = "baseUrl")]
         public string BaseUrl { get; set; }

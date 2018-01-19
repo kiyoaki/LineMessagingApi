@@ -1,6 +1,7 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Linq;
+using System.Runtime.Serialization;
 
-namespace LINE.CommonData
+namespace LINE
 {
     public class LineErrorResponse
     {
@@ -17,6 +18,12 @@ namespace LINE.CommonData
 
             [DataMember(Name = "property")]
             public string Property { get; set; }
+        }
+
+        public override string ToString()
+        {
+            var details = string.Join(", ", Details.Select(x => $"Property {x.Property} {x.Message}"));
+            return $"{Message}. details: {details}";
         }
     }
 }

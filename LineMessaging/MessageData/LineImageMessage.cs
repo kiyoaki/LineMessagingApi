@@ -2,10 +2,10 @@
 
 namespace LINE
 {
-    public class LineImageMessage
+    public class LineImageMessage : LineMessageObjectBase
     {
         [DataMember(Name = "type")]
-        public MessageType Type => MessageType.Image;
+        public override MessageType Type => MessageType.Image;
 
         [DataMember(Name = "originalContentUrl")]
         public string OriginalContentUrl { get; set; }

@@ -9,5 +9,10 @@ namespace LINE
 
         [DataMember(Name = "error_description")]
         public string Description { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Error}. description: {Description}.";
+        }
     }
 }

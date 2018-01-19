@@ -2,12 +2,12 @@
 
 namespace LINE
 {
-    public class LineMessageReplyRequest
+    public class LineReplyMessage
     {
         [DataMember(Name = "replyToken")]
-        public string replyToken { get; set; }
+        public string ReplyToken { get; set; }
 
         [DataMember(Name = "messages")]
-        public string messages { get; set; }
+        public LineMessageObjectBase[] Messages { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 
 namespace LINE
 {
-    public class LineLocationMessage
+    public class LineLocationMessage : LineMessageObjectBase
     {
         [DataMember(Name = "type")]
-        public MessageType Type => MessageType.Location;
+        public override MessageType Type => MessageType.Location;
 
         [DataMember(Name = "title")]
         public string Title { get; set; }
