@@ -52,13 +52,13 @@ namespace LineMessaging
                 public string RoomId { get; set; }
             }
 
-            public abstract class MessageObject
+            public class MessageObject
             {
                 [JsonProperty("id")]
                 public long Id { get; set; }
 
                 [JsonProperty("type")]
-                public abstract MessageType Type { get; set; }
+                public MessageType Type { get; set; }
 
                 [JsonProperty("text")]
                 public string Text { get; set; }
