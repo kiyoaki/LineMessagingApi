@@ -9,12 +9,16 @@ namespace LineMessaging.Test
     {
         private readonly string userId1;
         private readonly string userId2;
+        private readonly string roomId;
+        private readonly string groupId;
         private readonly LineMessagingClient apiClient;
 
         public LineMessagingClientTest()
         {
             userId1 = Environment.GetEnvironmentVariable("LINE_TEST_USER_ID_1");
             userId2 = Environment.GetEnvironmentVariable("LINE_TEST_USER_ID_2");
+            roomId = Environment.GetEnvironmentVariable("LINE_TEST_ROOM_ID");
+            groupId = Environment.GetEnvironmentVariable("LINE_TEST_GROUP_ID");
             var accessToken = Environment.GetEnvironmentVariable("LINE_ACCESS_TOKEN");
             apiClient = new LineMessagingClient(accessToken);
         }
@@ -28,7 +32,6 @@ namespace LineMessaging.Test
 
             var image = Image.Load(bytes);
             Assert.NotNull(image);
-
         }
 
         [Fact]
@@ -58,6 +61,27 @@ namespace LineMessaging.Test
             var message = new LineMulticastMessage(new[] { userId1, userId2 },
                 new[] { "PushLineMulticastMessagesTest 1", "PushLineMulticastMessagesTest 2" });
             await apiClient.PushMessage(message);
+        }
+
+        [Fact]
+        public async Task GetProfileTest()
+        {
+            var profile = await apiClient.GetProfile(userId1);
+            Assert.NotNull(profile);
+        }
+
+        [Fact]
+        public async Task GetRoomMemberTest()
+        {
+            var profile = await apiClient.GetRoomMember(roomId, userId1);
+            Assert.NotNull(profile);
+        }
+
+        [Fact]
+        public async Task GetGroupMemberTest()
+        {
+            var profile = await apiClient.GetGroupMember(groupId, userId1);
+            Assert.NotNull(profile);
         }
     }
 }

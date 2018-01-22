@@ -6,9 +6,9 @@ namespace LineMessaging
 {
     public partial class LineMessagingClient
     {
-        private const string RoomMemberApiPath = "/v2/bot/room/{roomId}/member/{userId}";
-        private const string RoomMembersApiPath = "/v2/bot/room/{roomId}/members/ids";
-        private const string LeaveRoomApiPath = "/v2/bot/room/{roomId}/leave";
+        private const string RoomMemberApiPath = "/v2/bot/room/{0}/member/{1}";
+        private const string RoomMembersApiPath = "/v2/bot/room/{0}/members/ids";
+        private const string LeaveRoomApiPath = "/v2/bot/room/{0}/leave";
 
         public async Task<LineProfile> GetRoomMember(string roomId, string userId)
         {
