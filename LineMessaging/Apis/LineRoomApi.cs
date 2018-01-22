@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace LINE
+namespace LineMessaging
 {
     public partial class LineMessagingClient
     {

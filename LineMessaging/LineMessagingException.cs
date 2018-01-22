@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LINE
+namespace LineMessaging
 {
     public class LineMessagingException : Exception
     {

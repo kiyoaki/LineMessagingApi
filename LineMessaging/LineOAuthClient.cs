@@ -4,7 +4,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Utf8Json;
 
-namespace LINE
+namespace LineMessaging
 {
     public class LineOAuthClient
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace LINE
+namespace LineMessaging
 {
     public class LineOAuthAccessTokenResponse
     {

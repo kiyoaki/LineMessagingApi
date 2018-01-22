@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace LINE
+namespace LineMessaging
 {
     public partial class LineMessagingClient
     {

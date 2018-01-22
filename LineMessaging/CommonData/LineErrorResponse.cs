@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Runtime.Serialization;
 
-namespace LINE
+namespace LineMessaging
 {
     public class LineErrorResponse
     {

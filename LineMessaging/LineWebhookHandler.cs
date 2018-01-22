@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Utf8Json;
 
-namespace LINE
+namespace LineMessaging
 {
     public class LineWebhookHandler
     {
