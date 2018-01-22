@@ -3,7 +3,7 @@ using System;
 
 namespace LineMessaging
 {
-    public class LineOAuthAccessTokenResponse
+    public class LineOAuthTokenResponse
     {
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }

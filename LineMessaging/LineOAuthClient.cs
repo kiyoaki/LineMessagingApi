@@ -34,7 +34,7 @@ namespace LineMessaging
             this.channelSecret = channelSecret;
         }
 
-        public async Task<LineOAuthAccessTokenResponse> GetAccessToken()
+        public async Task<LineOAuthTokenResponse> GetAccessToken()
         {
             using (var content = new FormUrlEncodedContent(new Dictionary<string, string>
             {
@@ -58,7 +58,7 @@ namespace LineMessaging
                             $"Error has occurred. Response StatusCode:{response.StatusCode} ReasonPhrase:{response.ReasonPhrase}.");
                     }
 
-                    return JsonConvert.DeserializeObject<LineOAuthAccessTokenResponse>(responseJson);
+                    return JsonConvert.DeserializeObject<LineOAuthTokenResponse>(responseJson);
                 }
                 catch (TaskCanceledException)
                 {
