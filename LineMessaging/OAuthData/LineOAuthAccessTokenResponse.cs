@@ -18,6 +18,6 @@ namespace LineMessaging
         }
 
         [JsonProperty("token_type")]
-        public OAuthTokenType TokenType { get; set; } = OAuthTokenType.Bearer;
+        public string TokenType { get; set; } = "Bearer";
     }
 }

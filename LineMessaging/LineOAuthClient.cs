@@ -1,15 +1,15 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace LineMessaging
 {
     public class LineOAuthClient
     {
-        private static readonly MediaTypeHeaderValue MediaType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
         private const string OAuthAccessTokenApiPath = "/v2/oauth/accessToken";
+        private const string OAuthRevokeTokenApiPath = "/v2/oauth/revoke";
         private static readonly HttpClient HttpClient = new HttpClient
         {
             BaseAddress = LineConstants.BaseUri,
@@ -36,19 +36,16 @@ namespace LineMessaging
 
         public async Task<LineOAuthAccessTokenResponse> GetAccessToken()
         {
-            var body = new LineOAuthAccessTokenRequest
+            using (var content = new FormUrlEncodedContent(new Dictionary<string, string>
             {
-                ClientId = channelId,
-                ClientSecret = channelSecret
-            };
-
-            using (var message = new HttpRequestMessage(HttpMethod.Post, OAuthAccessTokenApiPath))
+                { "grant_type", "client_credentials" },
+                { "client_id", channelId },
+                { "client_secret", channelSecret }
+            }))
             {
-                message.Content = new StringContent(JsonConvert.SerializeObject(body));
-                message.Content.Headers.ContentType = MediaType;
                 try
                 {
-                    var response = await HttpClient.SendAsync(message);
+                    var response = await HttpClient.PostAsync(OAuthAccessTokenApiPath, content);
                     var responseJson = await response.Content.ReadAsStringAsync();
                     if (!response.IsSuccessStatusCode)
                     {
@@ -62,6 +59,35 @@ namespace LineMessaging
                     }
 
                     return JsonConvert.DeserializeObject<LineOAuthAccessTokenResponse>(responseJson);
+                }
+                catch (TaskCanceledException)
+                {
+                    throw new LineMessagingException(OAuthAccessTokenApiPath, "Request Timeout");
+                }
+            }
+        }
+
+        public async Task RevokeAccessToken(string accessToken)
+        {
+            using (var content = new FormUrlEncodedContent(new Dictionary<string, string>
+            {
+                { "access_token", accessToken }
+            }))
+            {
+                try
+                {
+                    var response = await HttpClient.PostAsync(OAuthRevokeTokenApiPath, content);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        var responseJson = await response.Content.ReadAsStringAsync();
+                        var error = JsonConvert.DeserializeObject<LineOAuthErrorResponse>(responseJson);
+                        if (error != null)
+                        {
+                            throw new LineMessagingException(OAuthAccessTokenApiPath, error);
+                        }
+                        throw new LineMessagingException(OAuthAccessTokenApiPath,
+                            $"Error has occurred. Response StatusCode:{response.StatusCode} ReasonPhrase:{response.ReasonPhrase}.");
+                    }
                 }
                 catch (TaskCanceledException)
                 {
