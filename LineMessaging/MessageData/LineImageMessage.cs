@@ -1,16 +1,16 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineImageMessage : LineMessageObjectBase
     {
-        [DataMember(Name = "type")]
+        [JsonProperty("type")]
         public override MessageType Type => MessageType.Image;
 
-        [DataMember(Name = "originalContentUrl")]
+        [JsonProperty("originalContentUrl")]
         public string OriginalContentUrl { get; set; }
 
-        [DataMember(Name = "previewImageUrl")]
+        [JsonProperty("previewImageUrl")]
         public string PreviewImageUrl { get; set; }
     }
 }

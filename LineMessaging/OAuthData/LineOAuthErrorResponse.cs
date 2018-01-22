@@ -1,13 +1,13 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineOAuthErrorResponse
     {
-        [DataMember(Name = "error")]
+        [JsonProperty("error")]
         public string Error { get; set; }
 
-        [DataMember(Name = "error_description")]
+        [JsonProperty("error_description")]
         public string Description { get; set; }
 
         public override string ToString()

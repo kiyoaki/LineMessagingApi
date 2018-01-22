@@ -1,13 +1,13 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineReplyMessage
     {
-        [DataMember(Name = "replyToken")]
+        [JsonProperty("replyToken")]
         public string ReplyToken { get; set; }
 
-        [DataMember(Name = "messages")]
+        [JsonProperty("messages")]
         public LineMessageObjectBase[] Messages { get; set; }
     }
 }

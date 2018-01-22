@@ -1,13 +1,13 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineTextMessage : LineMessageObjectBase
     {
-        [DataMember(Name = "type")]
+        [JsonProperty("type")]
         public override MessageType Type => MessageType.Text;
 
-        [DataMember(Name = "text")]
+        [JsonProperty("text")]
         public string Text { get; set; }
     }
 }

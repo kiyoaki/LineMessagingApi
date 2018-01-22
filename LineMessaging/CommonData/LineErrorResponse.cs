@@ -1,29 +1,34 @@
 ﻿using System.Linq;
-using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineErrorResponse
     {
-        [DataMember(Name = "message")]
+        [JsonProperty("message")]
         public string Message { get; set; }
 
-        [DataMember(Name = "details")]
+        [JsonProperty("details")]
         public DetailObject[] Details { get; set; }
 
         public class DetailObject
         {
-            [DataMember(Name = "message")]
+            [JsonProperty("message")]
             public string Message { get; set; }
 
-            [DataMember(Name = "property")]
+            [JsonProperty("property")]
             public string Property { get; set; }
         }
 
         public override string ToString()
         {
-            var details = string.Join(", ", Details.Select(x => $"Property {x.Property} {x.Message}"));
-            return $"{Message}. details: {details}";
+            if (Details != null && Details.Any())
+            {
+                var details = string.Join(", ", Details.Select(x => $"Property {x.Property} {x.Message}"));
+                return $"{Message}. details: {details}";
+            }
+
+            return Message;
         }
     }
 }

@@ -1,23 +1,23 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace LineMessaging
 {
     public class LineOAuthAccessTokenResponse
     {
-        [DataMember(Name = "access_token")]
+        [JsonProperty("access_token")]
         public string AccessToken { get; set; }
 
-        [DataMember(Name = "expires_in")]
+        [JsonProperty("expires_in")]
         public long UnixtimeExpiresIn { get; set; }
 
-        [IgnoreDataMember]
+        [JsonIgnore]
         public DateTime ExpiresIn
         {
             get { return UnixtimeExpiresIn.FromUnixTime(); }
         }
 
-        [DataMember(Name = "token_type")]
+        [JsonProperty("token_type")]
         public OAuthTokenType TokenType { get; set; } = OAuthTokenType.Bearer;
     }
 }

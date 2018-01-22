@@ -1,16 +1,16 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineTemplateMessage : LineMessageObjectBase
     {
-        [DataMember(Name = "type")]
+        [JsonProperty("type")]
         public override MessageType Type => MessageType.Template;
 
-        [DataMember(Name = "altText")]
+        [JsonProperty("altText")]
         public string AltText { get; set; }
 
-        [DataMember(Name = "template")]
+        [JsonProperty("template")]
         public TemplateObject Template { get; set; }
 
         public class TemplateObject
@@ -19,28 +19,28 @@ namespace LineMessaging
 
         public class ButtonObject : TemplateObject
         {
-            [DataMember(Name = "type")]
+            [JsonProperty("type")]
             public TemplateType Type => TemplateType.Buttons;
 
-            [DataMember(Name = "thumbnailImageUrl")]
+            [JsonProperty("thumbnailImageUrl")]
             public string ThumbnailImageUrl { get; set; }
 
-            [DataMember(Name = "imageAspectRatio")]
+            [JsonProperty("imageAspectRatio")]
             public string ImageAspectRatio { get; set; }
 
-            [DataMember(Name = "imageSize")]
+            [JsonProperty("imageSize")]
             public string ImageSize { get; set; }
 
-            [DataMember(Name = "imageBackgroundColor")]
+            [JsonProperty("imageBackgroundColor")]
             public string ImageBackgroundColor { get; set; }
 
-            [DataMember(Name = "title")]
+            [JsonProperty("title")]
             public string Title { get; set; }
 
-            [DataMember(Name = "text")]
+            [JsonProperty("text")]
             public string Text { get; set; }
 
-            [DataMember(Name = "actions")]
+            [JsonProperty("actions")]
             public LineActionObjectBase[] Actions { get; set; }
         }
     }

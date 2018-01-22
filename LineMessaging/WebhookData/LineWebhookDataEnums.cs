@@ -1,7 +1,10 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
 
 namespace LineMessaging
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum WebhookRequestEventType
     {
         [EnumMember(Value = "message")]
@@ -26,6 +29,7 @@ namespace LineMessaging
         Beacon
     }
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum WebhookRequestSourceType
     {
         [EnumMember(Value = "user")]
@@ -38,6 +42,7 @@ namespace LineMessaging
         Room
     }
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum WebhookRequestBeaconType
     {
         [EnumMember(Value = "enter")]

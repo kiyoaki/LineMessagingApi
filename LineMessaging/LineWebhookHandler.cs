@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using Utf8Json;
 
 namespace LineMessaging
 {
@@ -28,7 +28,7 @@ namespace LineMessaging
             var (valid, json) = await Verify(req);
             if (valid)
             {
-                return (true, JsonSerializer.Deserialize<LineWebhookRequest>(json));
+                return (true, JsonConvert.DeserializeObject<LineWebhookRequest>(json));
             }
 
             return (false, null);

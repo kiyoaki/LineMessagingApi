@@ -1,16 +1,16 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineAudioMessage : LineMessageObjectBase
     {
-        [DataMember(Name = "type")]
+        [JsonProperty("type")]
         public override MessageType Type => MessageType.Audio;
 
-        [DataMember(Name = "originalContentUrl")]
+        [JsonProperty("originalContentUrl")]
         public string OriginalContentUrl { get; set; }
 
-        [DataMember(Name = "duration")]
+        [JsonProperty("duration")]
         public long Duration { get; set; }
     }
 }

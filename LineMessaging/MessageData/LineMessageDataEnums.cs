@@ -1,7 +1,10 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
 
 namespace LineMessaging
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum MessageType
     {
         [EnumMember(Value = "text")]
@@ -32,6 +35,7 @@ namespace LineMessaging
         Template
     }
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum TemplateType
     {
         [EnumMember(Value = "buttons")]
@@ -47,6 +51,7 @@ namespace LineMessaging
         ImageCarousel,
     }
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ActionType
     {
         [EnumMember(Value = "postback")]

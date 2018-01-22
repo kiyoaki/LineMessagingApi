@@ -1,13 +1,13 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineMembers
     {
-        [DataMember(Name = "memberIds")]
+        [JsonProperty("memberIds")]
         public string[] MemberIds { get; set; }
 
-        [DataMember(Name = "next")]
+        [JsonProperty("next")]
         public string Next { get; set; }
     }
 }

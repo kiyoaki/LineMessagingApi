@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Runtime.Serialization;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
 
 namespace LineMessaging
@@ -91,7 +91,7 @@ namespace LineMessaging
 
         internal class RichMenuIdResponse
         {
-            [DataMember(Name = "richMenuId")]
+            [JsonProperty("richMenuId")]
             internal string RichMenuId { get; set; }
         }
     }

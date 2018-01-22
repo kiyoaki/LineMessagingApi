@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Utf8Json;
 
 namespace LineMessaging
 {
@@ -84,7 +84,7 @@ namespace LineMessaging
             Dictionary<string, object> query = null, object body = null)
         {
             var responseJson = await SendRequest(method, path, query, body);
-            return JsonSerializer.Deserialize<T>(responseJson);
+            return JsonConvert.DeserializeObject<T>(responseJson);
         }
 
         private async Task PostImage(string path, string imageFormat, byte[] image)
@@ -130,11 +130,9 @@ namespace LineMessaging
 
             using (var message = new HttpRequestMessage(method, path + queryString))
             {
-                byte[] bodyBytes = null;
                 if (body != null)
                 {
-                    bodyBytes = JsonSerializer.Serialize(body);
-                    message.Content = new ByteArrayContent(bodyBytes);
+                    message.Content = new StringContent(JsonConvert.SerializeObject(body));
                     message.Content.Headers.ContentType = MediaTypeJson;
                 }
                 message.Headers.Authorization = accessTokenHeaderValue;
@@ -159,7 +157,7 @@ namespace LineMessaging
             if (!response.IsSuccessStatusCode)
             {
                 var responseJson = await response.Content.ReadAsStringAsync();
-                var error = JsonSerializer.Deserialize<LineErrorResponse>(responseJson);
+                var error = JsonConvert.DeserializeObject<LineErrorResponse>(responseJson);
                 if (error != null)
                 {
                     throw new LineMessagingException(path, error);

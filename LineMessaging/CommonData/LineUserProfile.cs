@@ -1,19 +1,19 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineProfile
     {
-        [DataMember(Name = "displayName")]
+        [JsonProperty("displayName")]
         public string DisplayName { get; set; }
 
-        [DataMember(Name = "userId")]
+        [JsonProperty("userId")]
         public string UserId { get; set; }
 
-        [DataMember(Name = "pictureUrl")]
+        [JsonProperty("pictureUrl")]
         public string PictureUrl { get; set; }
 
-        [DataMember(Name = "statusMessage")]
+        [JsonProperty("statusMessage")]
         public string StatusMessage { get; set; }
     }
 }

@@ -1,19 +1,19 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineAreaBoundsObject
     {
-        [DataMember(Name = "x")]
+        [JsonProperty("x")]
         public int X { get; set; }
 
-        [DataMember(Name = "y")]
+        [JsonProperty("y")]
         public int Y { get; set; }
 
-        [DataMember(Name = "width")]
+        [JsonProperty("width")]
         public int Width { get; set; }
 
-        [DataMember(Name = "height")]
+        [JsonProperty("height")]
         public int Height { get; set; }
     }
 }

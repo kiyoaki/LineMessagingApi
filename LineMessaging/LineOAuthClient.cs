@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Utf8Json;
 
 namespace LineMessaging
 {
@@ -44,18 +44,15 @@ namespace LineMessaging
 
             using (var message = new HttpRequestMessage(HttpMethod.Post, OAuthAccessTokenApiPath))
             {
-                byte[] bodyBytes = null;
-                bodyBytes = JsonSerializer.Serialize(body);
-                message.Content = new ByteArrayContent(bodyBytes);
+                message.Content = new StringContent(JsonConvert.SerializeObject(body));
                 message.Content.Headers.ContentType = MediaType;
-
                 try
                 {
                     var response = await HttpClient.SendAsync(message);
                     var responseJson = await response.Content.ReadAsStringAsync();
                     if (!response.IsSuccessStatusCode)
                     {
-                        var error = JsonSerializer.Deserialize<LineOAuthErrorResponse>(responseJson);
+                        var error = JsonConvert.DeserializeObject<LineOAuthErrorResponse>(responseJson);
                         if (error != null)
                         {
                             throw new LineMessagingException(OAuthAccessTokenApiPath, error);
@@ -64,7 +61,7 @@ namespace LineMessaging
                             $"Error has occurred. Response StatusCode:{response.StatusCode} ReasonPhrase:{response.ReasonPhrase}.");
                     }
 
-                    return JsonSerializer.Deserialize<LineOAuthAccessTokenResponse>(responseJson);
+                    return JsonConvert.DeserializeObject<LineOAuthAccessTokenResponse>(responseJson);
                 }
                 catch (TaskCanceledException)
                 {

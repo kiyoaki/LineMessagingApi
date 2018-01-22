@@ -1,16 +1,16 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineOAuthAccessTokenRequest
     {
-        [DataMember(Name = "grant_type")]
+        [JsonProperty("grant_type")]
         public OAuthGrantType GrantType { get; set; } = OAuthGrantType.ClientCredentials;
 
-        [DataMember(Name = "client_id")]
+        [JsonProperty("client_id")]
         public string ClientId { get; set; }
 
-        [DataMember(Name = "client_secret")]
+        [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
     }
 }

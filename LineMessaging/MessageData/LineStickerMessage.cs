@@ -1,16 +1,16 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineStickerMessage : LineMessageObjectBase
     {
-        [DataMember(Name = "type")]
+        [JsonProperty("type")]
         public override MessageType Type => MessageType.Sticker;
 
-        [DataMember(Name = "packageId")]
+        [JsonProperty("packageId")]
         public string PackageId { get; set; }
 
-        [DataMember(Name = "stickerId")]
+        [JsonProperty("stickerId")]
         public string StickerId { get; set; }
     }
 }

@@ -1,22 +1,22 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineLocationMessage : LineMessageObjectBase
     {
-        [DataMember(Name = "type")]
+        [JsonProperty("type")]
         public override MessageType Type => MessageType.Location;
 
-        [DataMember(Name = "title")]
+        [JsonProperty("title")]
         public string Title { get; set; }
 
-        [DataMember(Name = "address")]
+        [JsonProperty("address")]
         public string Address { get; set; }
 
-        [DataMember(Name = "latitude")]
+        [JsonProperty("latitude")]
         public double Latitude { get; set; }
 
-        [DataMember(Name = "longitude")]
+        [JsonProperty("longitude")]
         public double Longitude { get; set; }
     }
 }

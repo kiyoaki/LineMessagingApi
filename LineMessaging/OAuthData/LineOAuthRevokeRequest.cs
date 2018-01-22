@@ -1,10 +1,10 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineOAuthRevokeRequest
     {
-        [DataMember(Name = "access_token")]
+        [JsonProperty("access_token")]
         public string AccessToken { get; set; }
     }
 }

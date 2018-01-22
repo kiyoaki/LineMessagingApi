@@ -1,30 +1,30 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineRichMenu
     {
-        [DataMember(Name = "size")]
+        [JsonProperty("size")]
         public LineSizeObject Size { get; set; }
 
-        [DataMember(Name = "selected")]
+        [JsonProperty("selected")]
         public bool Selected { get; set; }
 
-        [DataMember(Name = "name")]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
-        [DataMember(Name = "charBarText")]
+        [JsonProperty("charBarText")]
         public string CharBarText { get; set; }
 
-        [DataMember(Name = "areas")]
+        [JsonProperty("areas")]
         public BoundsObject[] Areas { get; set; }
 
         public class BoundsObject
         {
-            [DataMember(Name = "bounds")]
+            [JsonProperty("bounds")]
             public LineAreaBoundsObject Bounds { get; set; }
 
-            [DataMember(Name = "action")]
+            [JsonProperty("action")]
             public LineActionObjectBase Action { get; set; }
         }
     }

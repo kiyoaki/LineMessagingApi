@@ -1,123 +1,123 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace LineMessaging
 {
     public class LineWebhookRequest
     {
-        [DataMember(Name = "events")]
+        [JsonProperty("events")]
         public Event[] Events { get; set; }
 
         public class Event
         {
-            [DataMember(Name = "type")]
+            [JsonProperty("type")]
             public WebhookRequestEventType Type { get; set; }
 
-            [DataMember(Name = "timestamp")]
+            [JsonProperty("timestamp")]
             public long UnixTimestamp { get; set; }
 
-            [IgnoreDataMember]
+            [JsonIgnore]
             public DateTime Timestamp
             {
                 get { return UnixTimestamp.FromUnixTime(); }
             }
 
-            [DataMember(Name = "replyToken")]
+            [JsonProperty("replyToken")]
             public string ReplyToken { get; set; }
 
-            [DataMember(Name = "source")]
+            [JsonProperty("source")]
             public SourceObject Source { get; set; }
 
-            [DataMember(Name = "message")]
+            [JsonProperty("message")]
             public MessageObject Message { get; set; }
 
-            [DataMember(Name = "postback")]
+            [JsonProperty("postback")]
             public PostbackObject Postback { get; set; }
 
-            [DataMember(Name = "beacon")]
+            [JsonProperty("beacon")]
             public BeaconObject Beacon { get; set; }
 
             public class SourceObject
             {
-                [DataMember(Name = "type")]
+                [JsonProperty("type")]
                 public WebhookRequestSourceType Type { get; set; }
 
-                [DataMember(Name = "userId")]
+                [JsonProperty("userId")]
                 public string UserId { get; set; }
 
-                [DataMember(Name = "groupId")]
+                [JsonProperty("groupId")]
                 public string GroupId { get; set; }
 
-                [DataMember(Name = "roomId")]
+                [JsonProperty("roomId")]
                 public string RoomId { get; set; }
             }
 
             public abstract class MessageObject
             {
-                [DataMember(Name = "id")]
+                [JsonProperty("id")]
                 public long Id { get; set; }
 
-                [DataMember(Name = "type")]
+                [JsonProperty("type")]
                 public abstract MessageType Type { get; set; }
 
-                [DataMember(Name = "text")]
+                [JsonProperty("text")]
                 public string Text { get; set; }
 
-                [DataMember(Name = "fileName")]
+                [JsonProperty("fileName")]
                 public string FileName { get; set; }
 
-                [DataMember(Name = "fileSize")]
+                [JsonProperty("fileSize")]
                 public long? FileSize { get; set; }
 
-                [DataMember(Name = "title")]
+                [JsonProperty("title")]
                 public string Title { get; set; }
 
-                [DataMember(Name = "address")]
+                [JsonProperty("address")]
                 public string Address { get; set; }
 
-                [DataMember(Name = "latitude")]
+                [JsonProperty("latitude")]
                 public double? Latitude { get; set; }
 
-                [DataMember(Name = "longitude")]
+                [JsonProperty("longitude")]
                 public double? Longitude { get; set; }
 
-                [DataMember(Name = "packageId")]
+                [JsonProperty("packageId")]
                 public string PackageId { get; set; }
 
-                [DataMember(Name = "stickerId")]
+                [JsonProperty("stickerId")]
                 public string StickerId { get; set; }
             }
 
             public class PostbackObject
             {
-                [DataMember(Name = "data")]
+                [JsonProperty("data")]
                 public string Data { get; set; }
 
-                [DataMember(Name = "params")]
+                [JsonProperty("params")]
                 public PostbackParams Params { get; set; }
 
                 public class PostbackParams
                 {
-                    [DataMember(Name = "date")]
+                    [JsonProperty("date")]
                     public string Date { get; set; }
 
-                    [DataMember(Name = "time")]
+                    [JsonProperty("time")]
                     public string Time { get; set; }
 
-                    [DataMember(Name = "datetime")]
+                    [JsonProperty("datetime")]
                     public string Datetime { get; set; }
                 }
             }
 
             public class BeaconObject
             {
-                [DataMember(Name = "hwid")]
+                [JsonProperty("hwid")]
                 public string HardwareId { get; set; }
 
-                [DataMember(Name = "type")]
+                [JsonProperty("type")]
                 public WebhookRequestBeaconType Type { get; set; }
 
-                [DataMember(Name = "dm")]
+                [JsonProperty("dm")]
                 public string DeviceMessage { get; set; }
             }
         }

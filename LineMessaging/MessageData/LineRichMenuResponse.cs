@@ -1,10 +1,10 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineRichMenuResponse : LineRichMenu
     {
-        [DataMember(Name = "richMenuId")]
+        [JsonProperty("richMenuId")]
         public string RichMenuId { get; set; }
     }
 }

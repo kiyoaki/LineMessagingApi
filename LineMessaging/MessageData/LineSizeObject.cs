@@ -1,13 +1,13 @@
-﻿using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace LineMessaging
 {
     public class LineSizeObject
     {
-        [DataMember(Name = "width")]
+        [JsonProperty("width")]
         public int Width { get; set; }
 
-        [DataMember(Name = "height")]
+        [JsonProperty("height")]
         public int Height { get; set; }
     }
 }

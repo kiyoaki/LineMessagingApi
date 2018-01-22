@@ -45,7 +45,7 @@ namespace LineMessaging
                 throw new ArgumentException($"{nameof(multicastMessage.Messages)} is required and max length is 5.");
             }
 
-            await Post(LineMessagePushApiPath, multicastMessage);
+            await Post(LineMessageMulticastApiPath, multicastMessage);
         }
     }
 }
