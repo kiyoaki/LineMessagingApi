@@ -479,10 +479,10 @@ Properties
 | `MessageType` | Type |  | 
 
 
-## `LineWebhook`
+## `LineWebhookContent`
 
 ```csharp
-public class LineMessaging.LineWebhook
+public class LineMessaging.LineWebhookContent
 
 ```
 
@@ -504,7 +504,7 @@ Methods
 
 | Type | Name | Summary | 
 | --- | --- | --- | 
-| `Task<LineWebhook>` | GetContent() |  | 
+| `Task<LineWebhookContent>` | GetContent() |  | 
 | `Task<String>` | GetContentJson() |  | 
 | `Task<Boolean>` | IsValid() |  | 
 

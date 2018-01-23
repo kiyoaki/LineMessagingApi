@@ -29,7 +29,7 @@
 - [`LineTemplateMessage`](LineMessaging#linetemplatemessage)
 - [`LineTextMessage`](LineMessaging#linetextmessage)
 - [`LineVideoMessage`](LineMessaging#linevideomessage)
-- [`LineWebhook`](LineMessaging#linewebhook)
+- [`LineWebhookContent`](LineMessaging#linewebhookcontent)
 - [`LineWebhookRequest`](LineMessaging#linewebhookrequest)
 - [`MessageAction`](LineMessaging#messageaction)
 - [`MessageType`](LineMessaging#messagetype)
