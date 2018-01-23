@@ -12,14 +12,14 @@ namespace LineMessaging
         private const string LinkUsersRichMenuApiPath = "/v2/bot/user/{0}/richmenu/{1}";
         private const string RichMenuContentApiPath = "/v2/bot/richmenu/{0}/content";
 
-        public async Task<LineProfile> GetRichMenu(string richMenuId)
+        public async Task<LineRichMenuResponse> GetRichMenu(string richMenuId)
         {
             if (string.IsNullOrEmpty(richMenuId))
             {
                 throw new ArgumentException($"{nameof(richMenuId)} is null or empty.");
             }
 
-            return await Get<LineProfile>(string.Format(RichMenuApiPath, richMenuId));
+            return await Get<LineRichMenuResponse>(string.Format(RichMenuApiPath, richMenuId));
         }
 
         public async Task<string> CreateRichMenu(LineRichMenu richMenu)
