@@ -68,7 +68,7 @@ var valid = await messagingClient.MulticastMessage(new [] { "User ID 1", "User I
 | `Task<LineMembers>` | GetGroupMembers(`String` groupId, `String` start = null) |  | 
 | `Task<Byte[]>` | GetMessageContent(`String` messageId) |  | 
 | `Task<LineProfile>` | GetProfile(`String` userId) |  | 
-| `Task<LineProfile>` | GetRichMenu(`String` richMenuId) |  | 
+| `Task<LineRichMenuResponse>` | GetRichMenu(`String` richMenuId) |  | 
 | `Task<Byte[]>` | GetRichMenuContent(`String` richMenuId) |  | 
 | `Task<LineProfile>` | GetRoomMember(`String` roomId, `String` userId) |  | 
 | `Task<LineMembers>` | GetRoomMembers(`String` roomId, `String` start = null) |  | 
