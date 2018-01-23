@@ -6,6 +6,18 @@
     <RootNamespace>LineMessaging</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>opensource.pfx</AssemblyOriginatorKeyFile>
+    <Authors>Kiyoaki Tsurutani</Authors>
+    <Company>Kiyoaki Tsurutani</Company>
+    <Description>LINE Messaging API Client Library for .NET (C#)</Description>
+    <Copyright>Kiyoaki Tsurutani</Copyright>
+    <PackageLicenseUrl>https://github.com/kiyoaki/LineMessagingApi/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/kiyoaki/LineMessagingApi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kiyoaki/LineMessagingApi</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>LINE, BOT</PackageTags>
+    <NeutralLanguage />
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.0</Version>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU' AND '$(TargetFramework)'=='net45'">
@@ -34,7 +46,6 @@
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <PackageReference Include="System.Net.Http" Version="4.3.3" />
-    <PackageReference Include="System.ValueTuple" Version="4.4.0" />
   </ItemGroup>
 
 </Project>

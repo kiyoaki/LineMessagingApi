@@ -2,9 +2,8 @@
 
 namespace LineMessaging
 {
-    public abstract class LineMessageObjectBase
+    public interface ILineMessage
     {
-        [JsonProperty("type")]
-        public abstract MessageType Type { get; }
+        MessageType Type { get; }
     }
 }

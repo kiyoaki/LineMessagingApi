@@ -2,10 +2,10 @@
 
 namespace LineMessaging
 {
-    public class LineAudioMessage : LineMessageObjectBase
+    public class LineAudioMessage : ILineMessage
     {
         [JsonProperty("type")]
-        public override MessageType Type => MessageType.Audio;
+        public MessageType Type => MessageType.Audio;
 
         [JsonProperty("originalContentUrl")]
         public string OriginalContentUrl { get; set; }

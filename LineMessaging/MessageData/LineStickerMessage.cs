@@ -2,10 +2,10 @@
 
 namespace LineMessaging
 {
-    public class LineStickerMessage : LineMessageObjectBase
+    public class LineStickerMessage : ILineMessage
     {
         [JsonProperty("type")]
-        public override MessageType Type => MessageType.Sticker;
+        public MessageType Type => MessageType.Sticker;
 
         [JsonProperty("packageId")]
         public string PackageId { get; set; }

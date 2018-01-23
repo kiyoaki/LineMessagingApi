@@ -2,10 +2,10 @@
 
 namespace LineMessaging
 {
-    public class LineImageMessage : LineMessageObjectBase
+    public class LineImageMessage : ILineMessage
     {
         [JsonProperty("type")]
-        public override MessageType Type => MessageType.Image;
+        public MessageType Type => MessageType.Image;
 
         [JsonProperty("originalContentUrl")]
         public string OriginalContentUrl { get; set; }

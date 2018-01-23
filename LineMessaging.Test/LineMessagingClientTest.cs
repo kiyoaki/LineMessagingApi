@@ -37,30 +37,26 @@ namespace LineMessaging.Test
         [Fact]
         public async Task PushMessageTest()
         {
-            var message = new LinePushMessage(userId1, "PushMessageTest");
-            await apiClient.PushMessage(message);
+            await apiClient.PushMessage(userId1, "PushMessageTest");
         }
 
         [Fact]
         public async Task PushMessagesTest()
         {
-            var message = new LinePushMessage(userId1, new[] { "PushMessagesTest 1", "PushMessagesTest 2" });
-            await apiClient.PushMessage(message);
+            await apiClient.PushMessage(userId1, new[] { "PushMessagesTest 1", "PushMessagesTest 2" });
         }
 
         [Fact]
         public async Task PushLineMulticastMessageTest()
         {
-            var message = new LineMulticastMessage(new[] { userId1, userId2 }, "PushLineMulticastMessageTest");
-            await apiClient.PushMessage(message);
+            await apiClient.MulticastMessage(new[] { userId1, userId2 }, "PushLineMulticastMessageTest");
         }
 
         [Fact]
         public async Task PushLineMulticastMessagesTest()
         {
-            var message = new LineMulticastMessage(new[] { userId1, userId2 },
+            await apiClient.MulticastMessage(new[] { userId1, userId2 },
                 new[] { "PushLineMulticastMessagesTest 1", "PushLineMulticastMessagesTest 2" });
-            await apiClient.PushMessage(message);
         }
 
         [Fact]

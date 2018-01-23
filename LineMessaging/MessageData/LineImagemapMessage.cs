@@ -2,10 +2,10 @@
 
 namespace LineMessaging
 {
-    public class LineImagemapMessage : LineMessageObjectBase
+    public class LineImagemapMessage : ILineMessage
     {
         [JsonProperty("type")]
-        public override MessageType Type => MessageType.Imagemap;
+        public MessageType Type => MessageType.Imagemap;
 
         [JsonProperty("baseUrl")]
         public string BaseUrl { get; set; }

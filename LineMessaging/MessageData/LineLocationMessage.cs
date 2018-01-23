@@ -2,10 +2,10 @@
 
 namespace LineMessaging
 {
-    public class LineLocationMessage : LineMessageObjectBase
+    public class LineLocationMessage : ILineMessage
     {
         [JsonProperty("type")]
-        public override MessageType Type => MessageType.Location;
+        public MessageType Type => MessageType.Location;
 
         [JsonProperty("title")]
         public string Title { get; set; }

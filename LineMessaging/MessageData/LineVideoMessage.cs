@@ -2,10 +2,10 @@
 
 namespace LineMessaging
 {
-    public class LineVideoMessage : LineMessageObjectBase
+    public class LineVideoMessage : ILineMessage
     {
         [JsonProperty("type")]
-        public override MessageType Type => MessageType.Video;
+        public MessageType Type => MessageType.Video;
 
         [JsonProperty("originalContentUrl")]
         public string OriginalContentUrl { get; set; }

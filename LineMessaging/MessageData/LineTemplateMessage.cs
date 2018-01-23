@@ -2,10 +2,10 @@
 
 namespace LineMessaging
 {
-    public class LineTemplateMessage : LineMessageObjectBase
+    public class LineTemplateMessage : ILineMessage
     {
         [JsonProperty("type")]
-        public override MessageType Type => MessageType.Template;
+        public MessageType Type => MessageType.Template;
 
         [JsonProperty("altText")]
         public string AltText { get; set; }

@@ -8,6 +8,6 @@ namespace LineMessaging
         public string ReplyToken { get; set; }
 
         [JsonProperty("messages")]
-        public LineMessageObjectBase[] Messages { get; set; }
+        public ILineMessage[] Messages { get; set; }
     }
 }
