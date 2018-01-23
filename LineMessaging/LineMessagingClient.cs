@@ -30,37 +30,37 @@ namespace LineMessaging
             accessTokenHeaderValue = new AuthenticationHeaderValue("Bearer", accessToken);
         }
 
-        internal async Task<T> Get<T>(string path, Dictionary<string, object> query = null)
+        private async Task<T> Get<T>(string path, Dictionary<string, object> query = null)
         {
             return await SendRequest<T>(HttpMethod.Get, path, query);
         }
 
-        internal async Task<T> Post<T>(string path, object body)
+        private async Task<T> Post<T>(string path, object body)
         {
             return await SendRequest<T>(HttpMethod.Post, path, null, body);
         }
 
-        internal async Task Post(string path, object body = null)
+        private async Task Post(string path, object body = null)
         {
             await SendRequest(HttpMethod.Post, path, null, body);
         }
 
-        internal async Task PostJpeg(string path, byte[] image)
+        private async Task PostJpeg(string path, byte[] image)
         {
             await PostImage(path, "jpeg", image);
         }
 
-        internal async Task PostPng(string path, byte[] image)
+        private async Task PostPng(string path, byte[] image)
         {
             await PostImage(path, "png", image);
         }
 
-        internal async Task Delete(string path)
+        private async Task Delete(string path)
         {
             await SendRequest(HttpMethod.Delete, path);
         }
 
-        internal async Task<byte[]> GetAsByteArray(string path)
+        private async Task<byte[]> GetAsByteArray(string path)
         {
             using (var message = new HttpRequestMessage(HttpMethod.Get, path))
             {

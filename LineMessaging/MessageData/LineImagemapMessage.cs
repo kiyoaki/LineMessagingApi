@@ -17,33 +17,39 @@ namespace LineMessaging
         public LineSizeObject BaseSize { get; set; }
 
         [JsonProperty("actions")]
-        public ActionObjectBase[] Actions { get; set; }
+        public IAction[] Actions { get; set; }
 
-        public abstract class ActionObjectBase
+        public interface IAction
         {
             [JsonProperty("type")]
-            public abstract ActionType Type { get; }
+            ActionType Type { get; }
 
             [JsonProperty("area")]
-            public LineAreaBoundsObject Area { get; set; }
+            LineAreaBounds Area { get; set; }
         }
 
-        public class LinkActionObject : ActionObjectBase
+        public class LinkActionObject : IAction
         {
             [JsonProperty("type")]
-            public override ActionType Type => ActionType.Uri;
+            public ActionType Type => ActionType.Uri;
 
             [JsonProperty("linkUri")]
             public string LinkUri { get; set; }
+
+            [JsonProperty("area")]
+            public LineAreaBounds Area { get; set; }
         }
 
-        public class MessageActionObject : ActionObjectBase
+        public class MessageActionObject : IAction
         {
             [JsonProperty("type")]
-            public override ActionType Type => ActionType.Message;
+            public ActionType Type => ActionType.Message;
 
             [JsonProperty("text")]
             public string Text { get; set; }
+
+            [JsonProperty("area")]
+            public LineAreaBounds Area { get; set; }
         }
     }
 }

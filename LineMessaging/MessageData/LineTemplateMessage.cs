@@ -41,7 +41,7 @@ namespace LineMessaging
             public string Text { get; set; }
 
             [JsonProperty("actions")]
-            public LineActionObjectBase[] Actions { get; set; }
+            public ILineAction[] Actions { get; set; }
         }
     }
 }

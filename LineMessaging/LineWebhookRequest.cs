@@ -14,7 +14,7 @@ namespace LineMessaging
         private readonly byte[] secret;
         private readonly HttpRequestMessage request;
         private string contentJson;
-        private LineWebhook content;
+        private LineWebhookContent content;
 
         public LineWebhookRequest(string channelSecret, HttpRequestMessage request)
         {
@@ -65,7 +65,7 @@ namespace LineMessaging
             return contentJson;
         }
 
-        public async Task<LineWebhook> GetContent()
+        public async Task<LineWebhookContent> GetContent()
         {
             if (content != null)
             {
@@ -78,7 +78,7 @@ namespace LineMessaging
                 return null;
             }
 
-            content = JsonConvert.DeserializeObject<LineWebhook>(contentJson);
+            content = JsonConvert.DeserializeObject<LineWebhookContent>(contentJson);
             return content;
         }
     }

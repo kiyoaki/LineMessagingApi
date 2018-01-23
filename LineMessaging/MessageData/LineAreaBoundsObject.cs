@@ -2,7 +2,7 @@
 
 namespace LineMessaging
 {
-    public class LineAreaBoundsObject
+    public class LineAreaBounds
     {
         [JsonProperty("x")]
         public int X { get; set; }

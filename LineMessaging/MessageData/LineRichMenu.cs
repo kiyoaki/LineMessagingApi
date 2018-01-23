@@ -22,10 +22,10 @@ namespace LineMessaging
         public class BoundsObject
         {
             [JsonProperty("bounds")]
-            public LineAreaBoundsObject Bounds { get; set; }
+            public LineAreaBounds Bounds { get; set; }
 
             [JsonProperty("action")]
-            public LineActionObjectBase Action { get; set; }
+            public ILineAction Action { get; set; }
         }
     }
 }

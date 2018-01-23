@@ -2,33 +2,33 @@
 
 namespace LineMessaging
 {
-    public abstract class LineActionObjectBase
+    public interface ILineAction
     {
         [JsonProperty("type")]
-        public abstract ActionType Type { get; }
+        ActionType Type { get; }
     }
 
-    public class PostbackAction : LineActionObjectBase
+    public class PostbackAction : ILineAction
     {
         [JsonProperty("type")]
-        public override ActionType Type => ActionType.Postback;
+        public ActionType Type => ActionType.Postback;
     }
 
-    public class MessageAction : LineActionObjectBase
+    public class MessageAction : ILineAction
     {
         [JsonProperty("type")]
-        public override ActionType Type => ActionType.Message;
+        public ActionType Type => ActionType.Message;
     }
 
-    public class UriAction : LineActionObjectBase
+    public class UriAction : ILineAction
     {
         [JsonProperty("type")]
-        public override ActionType Type => ActionType.Uri;
+        public ActionType Type => ActionType.Uri;
     }
 
-    public class DatetimepickerAction : LineActionObjectBase
+    public class DatetimepickerAction : ILineAction
     {
         [JsonProperty("type")]
-        public override ActionType Type => ActionType.Datetimepicker;
+        public ActionType Type => ActionType.Datetimepicker;
     }
 }
