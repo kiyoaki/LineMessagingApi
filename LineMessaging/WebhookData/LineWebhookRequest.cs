@@ -3,7 +3,7 @@ using System;
 
 namespace LineMessaging
 {
-    public class LineWebhookRequest
+    public class LineWebhook
     {
         [JsonProperty("events")]
         public Event[] Events { get; set; }

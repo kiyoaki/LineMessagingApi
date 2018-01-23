@@ -1,0 +1,27 @@
+# LineMessagingApi Unit Test
+
+## Environment Variables requirement
+
+### LineMessagingClientTest
+
+LINE_TEST_USER_ID_1
+
+LINE_TEST_USER_ID_2
+
+LINE_TEST_ROOM_ID
+
+LINE_TEST_GROUP_ID
+
+LINE_ACCESS_TOKEN
+
+### LineOAuthClientTest
+
+LINE_TEST_CHANNEL_ID
+
+LINE_TEST_CHANNEL_SECRET
+
+### LineWebhookRequestTest
+
+LINE_TEST_REQUEST_SIGNATURE
+
+LINE_TEST_WEBHOOK_REQUEST_JSON
