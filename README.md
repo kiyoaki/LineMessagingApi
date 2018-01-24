@@ -1,6 +1,13 @@
 # LineMessagingApi
 LINE Messaging API Client Library for .NET (C#)
 
+Install
+---
+* PM> Install-Package [LineMessaging](https://www.nuget.org/packages/LineMessaging)
+
+Quick Start
+---
+
 ## `LineOAuthClient`
 
 ### Usage
