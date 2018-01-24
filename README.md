@@ -47,22 +47,22 @@ var webhookContent = await webhookRequest.GetContent();
 var messagingClient = new LineMessagingClient("Access Token");
 
 // push single message (text, image, video, audio...)
-var valid = await messagingClient.PushMessage("User ID", ILineMessage);
+await messagingClient.PushMessage("User ID", ILineMessage);
 
 // push multiple messages (text, image, video, audio...)
-var valid = await messagingClient.PushMessage("User ID", IList<ILineMessage> messages);
+await messagingClient.PushMessage("User ID", IList<ILineMessage> messages);
 
 // push single text message
-var valid = await messagingClient.PushMessage("User ID", "text message");
+await messagingClient.PushMessage("User ID", "text message");
 
 // push multiple text message
-var valid = await messagingClient.PushMessage("User ID", new [] { "text message 1", "text message 2" });
+await messagingClient.PushMessage("User ID", new [] { "text message 1", "text message 2" });
 
 // multicast message
-var valid = await messagingClient.MulticastMessage(LineMulticastMessage);
+await messagingClient.MulticastMessage(LineMulticastMessage);
 
 // multicast single text message
-var valid = await messagingClient.MulticastMessage(new [] { "User ID 1", "User ID 2" }, "text message");
+await messagingClient.MulticastMessage(new [] { "User ID 1", "User ID 2" }, "text message");
 ```
 
 ### Methods
