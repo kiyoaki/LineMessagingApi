@@ -43,7 +43,7 @@ namespace LineMessaging.Test
         [Fact]
         public async Task PushMessagesTest()
         {
-            await apiClient.PushMessage(userId1, new[] { "PushMessagesTest 1", "PushMessagesTest 2" });
+            await apiClient.PushMessage(userId1, "PushMessagesTest 1", "PushMessagesTest 2");
         }
 
         [Fact]
@@ -56,7 +56,7 @@ namespace LineMessaging.Test
         public async Task PushLineMulticastMessagesTest()
         {
             await apiClient.MulticastMessage(new[] { userId1, userId2 },
-                new[] { "PushLineMulticastMessagesTest 1", "PushLineMulticastMessagesTest 2" });
+                "PushLineMulticastMessagesTest 1", "PushLineMulticastMessagesTest 2");
         }
 
         [Fact]

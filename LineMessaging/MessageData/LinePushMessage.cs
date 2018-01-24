@@ -10,6 +10,6 @@ namespace LineMessaging
         public string To { get; set; }
 
         [JsonProperty("messages")]
-        public IList<ILineMessage> Messages { get; set; }
+        public IEnumerable<ILineMessage> Messages { get; set; }
     }
 }

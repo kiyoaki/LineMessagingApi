@@ -211,16 +211,19 @@ Methods
 | `Task` | LeaveRoom(`String` roomId) |  | 
 | `Task` | LinkUsersRichMenu(`String` userId, `String` richMenuId) |  | 
 | `Task` | MulticastMessage(`LineMulticastMessage` multicastMessage) |  | 
-| `Task` | MulticastMessage(`IList<String>` to, `ILineMessage` message) |  | 
-| `Task` | MulticastMessage(`IList<String>` to, `IList<ILineMessage>` messages) |  | 
-| `Task` | MulticastMessage(`IList<String>` to, `String` message) |  | 
-| `Task` | MulticastMessage(`IList<String>` to, `IList<String>` messages) |  | 
+| `Task` | MulticastMessage(`IEnumerable<String>` to, `ILineMessage` message) |  | 
+| `Task` | MulticastMessage(`IEnumerable<String>` to, `IEnumerable<ILineMessage>` messages) |  | 
+| `Task` | MulticastMessage(`IEnumerable<String>` to, `String` message) |  | 
+| `Task` | MulticastMessage(`IEnumerable<String>` to, `String[]` messages) |  | 
 | `Task` | PushMessage(`LinePushMessage` pushMessage) |  | 
 | `Task` | PushMessage(`String` to, `ILineMessage` message) |  | 
-| `Task` | PushMessage(`String` to, `IList<ILineMessage>` messages) |  | 
+| `Task` | PushMessage(`String` to, `IEnumerable<ILineMessage>` messages) |  | 
 | `Task` | PushMessage(`String` to, `String` message) |  | 
-| `Task` | PushMessage(`String` to, `IList<String>` messages) |  | 
+| `Task` | PushMessage(`String` to, `String[]` messages) |  | 
 | `Task` | ReplyMessage(`LineReplyMessage` replyMessage) |  | 
+| `Task` | ReplyMessage(`String` replyToken, `IEnumerable<ILineMessage>` messages) |  | 
+| `Task` | ReplyMessage(`String` replyToken, `String` message) |  | 
+| `Task` | ReplyMessage(`String` replyToken, `String[]` messages) |  | 
 | `Task` | UnlinkUsersRichMenu(`String` userId) |  | 
 
 
@@ -259,8 +262,8 @@ Properties
 
 | Type | Name | Summary | 
 | --- | --- | --- | 
-| `IList<ILineMessage>` | Messages |  | 
-| `IList<String>` | To |  | 
+| `IEnumerable<ILineMessage>` | Messages |  | 
+| `IEnumerable<String>` | To |  | 
 
 
 ## `LineOAuthClient`
@@ -345,7 +348,7 @@ Properties
 
 | Type | Name | Summary | 
 | --- | --- | --- | 
-| `IList<ILineMessage>` | Messages |  | 
+| `IEnumerable<ILineMessage>` | Messages |  | 
 | `String` | To |  | 
 
 
@@ -360,7 +363,7 @@ Properties
 
 | Type | Name | Summary | 
 | --- | --- | --- | 
-| `ILineMessage[]` | Messages |  | 
+| `IEnumerable<ILineMessage>` | Messages |  | 
 | `String` | ReplyToken |  | 
 
 

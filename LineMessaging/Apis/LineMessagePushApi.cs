@@ -22,7 +22,8 @@ namespace LineMessaging
                 throw new ArgumentException($"{nameof(pushMessage.To)} is null or empty.");
             }
 
-            if (pushMessage.Messages == null || pushMessage.Messages.Count == 0 || pushMessage.Messages.Count > 5)
+            var messageCount = pushMessage.Messages.Count();
+            if (pushMessage.Messages == null || messageCount == 0 || messageCount > 5)
             {
                 throw new ArgumentException($"{nameof(pushMessage.Messages)} is required and max length is 5.");
             }
@@ -49,7 +50,7 @@ namespace LineMessaging
             });
         }
 
-        public async Task PushMessage(string to, IList<ILineMessage> messages)
+        public async Task PushMessage(string to, IEnumerable<ILineMessage> messages)
         {
             if (to == null)
             {
@@ -61,7 +62,8 @@ namespace LineMessaging
                 throw new ArgumentNullException(nameof(messages));
             }
 
-            if (messages.Count == 0 || messages.Count > 5)
+            var messageCount = messages.Count();
+            if (messageCount == 0 || messageCount > 5)
             {
                 throw new ArgumentException($"{nameof(messages)} is required and max length is 5.");
             }
@@ -92,7 +94,7 @@ namespace LineMessaging
             });
         }
 
-        public async Task PushMessage(string to, IList<string> messages)
+        public async Task PushMessage(string to, params string[] messages)
         {
             if (to == null)
             {
@@ -104,7 +106,7 @@ namespace LineMessaging
                 throw new ArgumentNullException(nameof(messages));
             }
 
-            if (messages.Count == 0 || messages.Count > 5)
+            if (messages.Length == 0 || messages.Length > 5)
             {
                 throw new ArgumentException($"{nameof(messages)} is required and max length is 5.");
             }
@@ -123,12 +125,14 @@ namespace LineMessaging
                 throw new ArgumentNullException(nameof(multicastMessage));
             }
 
-            if (multicastMessage.To == null || multicastMessage.To.Count == 0 || multicastMessage.To.Count > 150)
+            var toCount = multicastMessage.To.Count();
+            if (multicastMessage.To == null || toCount == 0 || toCount > 150)
             {
                 throw new ArgumentException($"{nameof(multicastMessage.To)} is required and max length is 150.");
             }
 
-            if (multicastMessage.Messages == null || multicastMessage.Messages.Count == 0 || multicastMessage.Messages.Count > 5)
+            var messageCount = multicastMessage.Messages.Count();
+            if (multicastMessage.Messages == null || messageCount == 0 || messageCount > 5)
             {
                 throw new ArgumentException($"{nameof(multicastMessage.Messages)} is required and max length is 5.");
             }
@@ -136,7 +140,7 @@ namespace LineMessaging
             await Post(LineMessageMulticastApiPath, multicastMessage);
         }
 
-        public async Task MulticastMessage(IList<string> to, ILineMessage message)
+        public async Task MulticastMessage(IEnumerable<string> to, ILineMessage message)
         {
             if (to == null)
             {
@@ -148,7 +152,8 @@ namespace LineMessaging
                 throw new ArgumentNullException(nameof(message));
             }
 
-            if (to.Count == 0 || to.Count > 150)
+            var toCount = to.Count();
+            if (toCount == 0 || toCount > 150)
             {
                 throw new ArgumentException($"{nameof(to)} is required and max length is 150.");
             }
@@ -160,7 +165,7 @@ namespace LineMessaging
             });
         }
 
-        public async Task MulticastMessage(IList<string> to, IList<ILineMessage> messages)
+        public async Task MulticastMessage(IEnumerable<string> to, IEnumerable<ILineMessage> messages)
         {
             if (to == null)
             {
@@ -172,12 +177,14 @@ namespace LineMessaging
                 throw new ArgumentNullException(nameof(messages));
             }
 
-            if (to.Count == 0 || to.Count > 150)
+            var toCount = to.Count();
+            if (toCount == 0 || toCount > 150)
             {
                 throw new ArgumentException($"{nameof(to)} is required and max length is 150.");
             }
 
-            if (messages.Count == 0 || messages.Count > 5)
+            var messageCount = messages.Count();
+            if (messageCount == 0 || messageCount > 5)
             {
                 throw new ArgumentException($"{nameof(messages)} is required and max length is 5.");
             }
@@ -189,7 +196,7 @@ namespace LineMessaging
             });
         }
 
-        public async Task MulticastMessage(IList<string> to, string message)
+        public async Task MulticastMessage(IEnumerable<string> to, string message)
         {
             if (to == null)
             {
@@ -201,7 +208,8 @@ namespace LineMessaging
                 throw new ArgumentException($"{nameof(message)} is null or empty.");
             }
 
-            if (to.Count == 0 || to.Count > 150)
+            var toCount = to.Count();
+            if (toCount == 0 || toCount > 150)
             {
                 throw new ArgumentException($"{nameof(to)} is required and max length is 150.");
             }
@@ -213,7 +221,7 @@ namespace LineMessaging
             });
         }
 
-        public async Task MulticastMessage(IList<string> to, IList<string> messages)
+        public async Task MulticastMessage(IEnumerable<string> to, params string[] messages)
         {
             if (to == null)
             {
@@ -225,12 +233,14 @@ namespace LineMessaging
                 throw new ArgumentNullException(nameof(messages));
             }
 
-            if (to.Count == 0 || to.Count > 150)
+            var toCount = to.Count();
+            if (toCount == 0 || toCount > 150)
             {
                 throw new ArgumentException($"{nameof(to)} is required and max length is 150.");
             }
 
-            if (messages.Count == 0 || messages.Count > 5)
+            var messageCount = messages.Count();
+            if (messageCount == 0 || messageCount > 5)
             {
                 throw new ArgumentException($"{nameof(messages)} is required and max length is 5.");
             }

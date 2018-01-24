@@ -17,8 +17,9 @@
     <PackageTags>LINE, BOT</PackageTags>
     <NeutralLanguage />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.2</Version>
+    <Version>1.2.0</Version>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <PackageReleaseNotes>Add reply message methods</PackageReleaseNotes>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU' AND '$(TargetFramework)'=='net45'">
