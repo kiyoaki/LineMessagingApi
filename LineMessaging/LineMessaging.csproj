@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
     <AssemblyName>LineMessaging</AssemblyName>
     <RootNamespace>LineMessaging</RootNamespace>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>opensource.pfx</AssemblyOriginatorKeyFile>
     <Authors>Kiyoaki Tsurutani</Authors>
     <Company>Kiyoaki Tsurutani</Company>
