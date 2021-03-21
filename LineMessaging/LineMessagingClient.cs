@@ -17,6 +17,11 @@ namespace LineMessaging
             BaseAddress = LineConstants.BaseUri,
             Timeout = TimeSpan.FromSeconds(10)
         };
+        private static readonly HttpClient HttpDataClient = new HttpClient
+        {
+            BaseAddress = LineConstants.BaseDataUri,
+            Timeout = TimeSpan.FromSeconds(10)
+        };
 
         private readonly AuthenticationHeaderValue accessTokenHeaderValue;
 
@@ -68,7 +73,7 @@ namespace LineMessaging
                 HttpResponseMessage response;
                 try
                 {
-                    response = await HttpClient.SendAsync(message);
+                    response = await HttpDataClient.SendAsync(message);
                 }
                 catch (TaskCanceledException)
                 {
