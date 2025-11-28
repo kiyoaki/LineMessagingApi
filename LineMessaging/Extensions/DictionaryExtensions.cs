@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace LineMessaging
 {
@@ -10,7 +11,7 @@ namespace LineMessaging
         {
             if (source == null) throw new ArgumentNullException();
             if (source.Count == 0) return string.Empty;
-            return "?" + string.Join("&", source.Select(x => $"{x.Key}={x.Value}"));
+            return "?" + string.Join("&", source.Select(x => $"{WebUtility.UrlEncode(x.Key)}={WebUtility.UrlEncode(x.Value?.ToString())}"));
         }
     }
 }

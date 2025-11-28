@@ -83,15 +83,15 @@ namespace LineMessaging
                         var error = JsonConvert.DeserializeObject<LineOAuthErrorResponse>(responseJson);
                         if (error != null)
                         {
-                            throw new LineMessagingException(OAuthAccessTokenApiPath, error);
+                            throw new LineMessagingException(OAuthRevokeTokenApiPath, error);
                         }
-                        throw new LineMessagingException(OAuthAccessTokenApiPath,
+                        throw new LineMessagingException(OAuthRevokeTokenApiPath,
                             $"Error has occurred. Response StatusCode:{response.StatusCode} ReasonPhrase:{response.ReasonPhrase}.");
                     }
                 }
                 catch (TaskCanceledException)
                 {
-                    throw new LineMessagingException(OAuthAccessTokenApiPath, "Request Timeout");
+                    throw new LineMessagingException(OAuthRevokeTokenApiPath, "Request Timeout");
                 }
             }
         }

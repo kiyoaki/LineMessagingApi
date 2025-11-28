@@ -22,8 +22,13 @@ namespace LineMessaging
                 throw new ArgumentException($"{nameof(pushMessage.To)} is null or empty.");
             }
 
+            if (pushMessage.Messages == null)
+            {
+                throw new ArgumentException($"{nameof(pushMessage.Messages)} is required and max length is 5.");
+            }
+
             var messageCount = pushMessage.Messages.Count();
-            if (pushMessage.Messages == null || messageCount == 0 || messageCount > 5)
+            if (messageCount == 0 || messageCount > 5)
             {
                 throw new ArgumentException($"{nameof(pushMessage.Messages)} is required and max length is 5.");
             }
@@ -125,14 +130,24 @@ namespace LineMessaging
                 throw new ArgumentNullException(nameof(multicastMessage));
             }
 
-            var toCount = multicastMessage.To.Count();
-            if (multicastMessage.To == null || toCount == 0 || toCount > 150)
+            if (multicastMessage.To == null)
             {
                 throw new ArgumentException($"{nameof(multicastMessage.To)} is required and max length is 150.");
             }
 
+            var toCount = multicastMessage.To.Count();
+            if (toCount == 0 || toCount > 150)
+            {
+                throw new ArgumentException($"{nameof(multicastMessage.To)} is required and max length is 150.");
+            }
+
+            if (multicastMessage.Messages == null)
+            {
+                throw new ArgumentException($"{nameof(multicastMessage.Messages)} is required and max length is 5.");
+            }
+
             var messageCount = multicastMessage.Messages.Count();
-            if (multicastMessage.Messages == null || messageCount == 0 || messageCount > 5)
+            if (messageCount == 0 || messageCount > 5)
             {
                 throw new ArgumentException($"{nameof(multicastMessage.Messages)} is required and max length is 5.");
             }

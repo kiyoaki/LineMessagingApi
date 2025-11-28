@@ -21,8 +21,13 @@ namespace LineMessaging
                 throw new ArgumentException($"{nameof(replyMessage.ReplyToken)} is null or empty.");
             }
 
+            if (replyMessage.Messages == null)
+            {
+                throw new ArgumentException($"{nameof(replyMessage.Messages)} is required and max length is 5.");
+            }
+
             var messageCount = replyMessage.Messages.Count();
-            if (replyMessage.Messages == null || messageCount == 0 || messageCount > 5)
+            if (messageCount == 0 || messageCount > 5)
             {
                 throw new ArgumentException($"{nameof(replyMessage.Messages)} is required and max length is 5.");
             }

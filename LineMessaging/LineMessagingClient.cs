@@ -121,6 +121,11 @@ namespace LineMessaging
                 {
                     throw new LineMessagingException(path, "Request Timeout");
                 }
+
+                using (response)
+                {
+                    await CheckStatusCode(path, response);
+                }
             }
         }
 
